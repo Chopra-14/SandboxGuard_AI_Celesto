@@ -1,0 +1,18 @@
+[
+  {
+    "package_name": "lodash",
+    "package_version": "4.17.21",
+    "success": false,
+    "risk_level": "error",
+    "findings": [
+      "Error: 'NoneType' object is not callable"
+    ],
+    "file_changes": [],
+    "blocked_commands": [],
+    "network_attempts": [],
+    "error": "'NoneType' object is not callable",
+    "wall_clock_s": 0.0005204677581787109,
+    "boot_to_ready_s": 0.0,
+    "cost_usd": 0.0
+  }
+]

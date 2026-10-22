@@ -1,0 +1,7 @@
+{
+  "failed_step": 7,
+  "total_steps": 10,
+  "policy": "rollback",
+  "rationale": "Step 7 corresponds to the package installation phase where untrusted code executes. If this step fails (e.g., malicious package triggers safety hook, network timeout, or install script hangs), the safest recovery is rollback to the pre-install snapshot taken at step 3. This preserves the clean sandbox state for the next audit, avoids the 500ms boot time of a fresh sandbox, and guarantees no residual filesystem contamination from the failed package. Resume would risk continuing with a partially installed or compromised package. Fresh start would work but wastes the boot time and snapshot storage. Rollback is deterministic, fast (<200ms), and aligns with the containment principle: treat every package as potentially hostile and assume the sandbox is dirty after a failed install.",
+  "trace_path": "failure_trace.jsonl"
+}

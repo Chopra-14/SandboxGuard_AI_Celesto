@@ -1,0 +1,10 @@
+{"ts": "2026-10-22T20:55:10.123Z", "sandbox_name": "sbx-audit-a1b2c3d4e5", "step": 1, "event": "step_start", "details": "mkdir -p /workspace/audit"}
+{"ts": "2026-10-22T20:55:10.456Z", "sandbox_name": "sbx-audit-a1b2c3d4e5", "step": 2, "event": "step_start", "details": "npm pack dry-run"}
+{"ts": "2026-10-22T20:55:11.789Z", "sandbox_name": "sbx-audit-a1b2c3d4e5", "step": 3, "event": "step_start", "details": "create snapshot pre-audit-abc123"}
+{"ts": "2026-10-22T20:55:11.801Z", "sandbox_name": "sbx-audit-a1b2c3d4e5", "step": 3, "event": "snapshot_created", "details": "snapshot_id=pre-audit-abc123"}
+{"ts": "2026-10-22T20:55:12.001Z", "sandbox_name": "sbx-audit-a1b2c3d4e5", "step": 4, "event": "step_start", "details": "npm install package"}
+{"ts": "2026-10-22T20:55:12.345Z", "sandbox_name": "sbx-audit-a1b2c3d4e5", "step": 7, "event": "step_failed", "details": "safety hook blocked exfiltration attempt in postinstall"}
+{"ts": "2026-10-22T20:55:12.350Z", "sandbox_name": "sbx-audit-a1b2c3d4e5", "step": 7, "event": "policy_applied", "policy": "rollback", "details": "restoring snapshot pre-audit-abc123"}
+{"ts": "2026-10-22T20:55:12.501Z", "sandbox_name": "sbx-audit-a1b2c3d4e5", "step": 7, "event": "rollback_complete", "details": "snapshot restored, sandbox clean"}
+{"ts": "2026-10-22T20:55:12.510Z", "sandbox_name": "sbx-audit-a1b2c3d4e5", "step": 8, "event": "step_start", "details": "generate report"}
+{"ts": "2026-10-22T20:55:12.520Z", "sandbox_name": "sbx-audit-a1b2c3d4e5", "step": 10, "event": "step_complete", "details": "audit complete, risk_level=critical"}

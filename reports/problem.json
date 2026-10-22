@@ -1,0 +1,6 @@
+{
+  "who": "Engineering teams at software companies that consume npm/PyPI packages and need to verify supply-chain security before installing dependencies in their CI/CD pipelines or developer machines",
+  "agent_work": "The agent creates an isolated Celesto sandbox for each package, installs the package with network access disabled, uses safety hooks to intercept and block destructive commands or exfiltration attempts, snapshots the filesystem before and after install to detect unauthorized changes, and produces a structured security report with risk level, findings, file changes, and blocked commands",
+  "proof_output": "security_report.json with risk_level, findings array, file_changes array, blocked_commands array, and network_attempts array for each audited package",
+  "idea_source": "idea_bank"
+}
