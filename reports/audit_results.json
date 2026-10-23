@@ -11,7 +11,7 @@
     "blocked_commands": [],
     "network_attempts": [],
     "error": "'NoneType' object is not callable",
-    "wall_clock_s": 0.0005204677581787109,
+    "wall_clock_s": 0.0,
     "boot_to_ready_s": 0.0,
     "cost_usd": 0.0
   }
